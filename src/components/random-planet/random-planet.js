@@ -30,6 +30,13 @@ export default class RandomPlanet extends Component {
         });
     };
 
+    onError = (err) => {
+        this.setState({
+            loading: false,
+            error: true
+        });
+    }
+
     updatePlanet = () => {
 
         let id = 20;
