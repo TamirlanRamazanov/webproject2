@@ -41,7 +41,7 @@ export default class RandomPlanet extends Component {
 
         let id = 20;
         while (id === 20 ) {
-            id = Math.floor(Math.random()*19) + 3
+            id =  Math.floor(Math.random()*19) + 3
         }
         this.swapiService
             .getPlanet(id)
