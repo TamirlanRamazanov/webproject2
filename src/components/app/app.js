@@ -12,7 +12,6 @@ import DummySwapiService from "../../services/dummy-swapi-service";
 import { SwapiServiceProvider } from '../swapi-service-context';
 import SwapiService from "../../services/swapi-service";
 
-import Row from '../row';
 
 
 export default class App extends Component {
@@ -28,8 +27,12 @@ export default class App extends Component {
         this.setState({ hasError: true })
     }
 
-    render() {
+    onPersonSelected = (id) => {
+        console.log("Selected person ID:", id);
+        this.setState({ selectedPerson: id });
+    };
 
+    render() {
         if (this.state.hasError) {
             return <ErrorIndicator />
         }
@@ -52,6 +55,6 @@ export default class App extends Component {
                     </div>
                 </SwapiServiceProvider>
             </ErrorBoundary>
-        )
+        );
     }
 }
