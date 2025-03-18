@@ -5,18 +5,19 @@ import RandomPlanet from '../random-planet'
 
 import './app.css'
 import ErrorIndicator from "../error-indicator";
-import PeoplePage from "../people-page";
-import SwapiService from "../../services/swapi-service"
-import { PersonDetails } from "../sw-components";
-import { PersonList, PlanetList, StarshipList } from "../sw-components/item-lists";
+import { PersonDetails, PersonList, PlanetList, StarshipList } from "../sw-components";
 import ErrorBoundary from "../error-boundary";
+
+import DummySwapiService from "../../services/dummy-swapi-service";
 import { SwapiServiceProvider } from '../swapi-service-context';
+import SwapiService from "../../services/swapi-service";
+
 import Row from '../row';
 
 
 export default class App extends Component {
 
-    swapiService = new SwapiService()
+    swapiService = new SwapiService();
 
     state = {
         selectedPerson: null,
@@ -27,43 +28,27 @@ export default class App extends Component {
         this.setState({ hasError: true })
     }
 
-    onPersonSelected = (id) => {
-        console.log("Selected person ID:", id);
-        this.setState({ selectedPerson: id });
-    };
-
     render() {
 
         if (this.state.hasError) {
             return <ErrorIndicator />
         }
 
-        const personList = (
-            <PersonList onItemSelected={this.onPersonSelected}>
-                { i => `${i.name} (${i.birthYear})` }
-            </PersonList>
-        );
-
-        const personDetails = (
-            <PersonDetails itemId={this.state.selectedPerson} />
-        );
 
         return (
             <ErrorBoundary>
-                <SwapiServiceProvider value={this.swapiService}>
+                <SwapiServiceProvider value={this.swapiService} >
                     <div className="stardb-app">
                         <Header/>
                         <RandomPlanet />
 
-                        <Row left={personList} right={personDetails} />
+                        <PersonList />
+                        <PersonDetails itemId={2} />
 
-                        <StarshipList>
-                            { i => `${i.name} (${i.cargoCapacity})` }
-                        </StarshipList>
+                        <StarshipList />
 
-                        <PlanetList>
-                            { i => `${i.name} (${i.population})` }
-                        </PlanetList>
+                        <PlanetList/>
+
                     </div>
                 </SwapiServiceProvider>
             </ErrorBoundary>
