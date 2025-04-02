@@ -4,7 +4,6 @@ import ItemDetails, { Record } from '../item-details'
 import { withSwapiService } from '../hoc-helpers'
 
 const PlanetDetails = (props) => {
-    const { getPlanet, getPlanetImage } = swapiService
     return (
         <ItemDetails {...props}>
 
