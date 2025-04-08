@@ -18,7 +18,7 @@ const WelcomeHeader = () => {
                     </p>
                     <hr className="my-4" />
                     <p className="minor">
-                        © Copyright 2020. Developer - <a href="https://ythosa.github.io">Ythosa</a>.
+                        © Copyright 2025. Developer - <a href="https://github.com/TamirlanRamazanov">Tamirlan Ramazanov</a>.
                     </p>
                 </div>
             </div>
