@@ -4,10 +4,8 @@ import ItemDetails, { Record } from '../item-details'
 import { withSwapiService } from '../hoc-helpers'
 
 const PersonDetails = (props) => {
-
     return (
         <ItemDetails {...props}>
-
             <Record field="gender" label="Gender" />
             <Record field="eyeColor" label="Eye Color" />
             <Record field="height" label="Height" />
@@ -24,4 +22,4 @@ const mapMethodsToProps = (swapiService) => {
     }
 }
 
-export default withSwapiService(mapMethodsToProps) (PersonDetails)
+export default withSwapiService(mapMethodsToProps)(PersonDetails)

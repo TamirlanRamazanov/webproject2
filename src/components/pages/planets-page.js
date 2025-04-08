@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom'
 import { PlanetList, PlanetDetails } from "../sw-components"
 import Row from "../row"
 
-
 const PlanetsPage = ({ history, match }) => {
 
     const { id } = match.params

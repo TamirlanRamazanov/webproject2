@@ -4,8 +4,6 @@ import { withData, withSwapiService, withChildFunction, compose } from "../hoc-h
 import ItemList from "../item-list"
 
 
-
-// Render list instance label
 const renderNameAndGender = ({name, gender}) =>
     <span>{name}, &nbsp;{gender}</span>
 
@@ -15,7 +13,7 @@ const renderNameAndModel = ({ name, model }) =>
 const renderNameAndPopulation = ({ name, population }) =>
     <span>{name}, &nbsp;{population} {population !== 'unknown' ? 'people' : null}</span>
 
-// Transform methods
+
 const mapPersonMethodsToProps = (swapiService) => {
   return {
     getData: swapiService.getAllPeople
@@ -32,7 +30,6 @@ const mapStarshipMethodsToProps = (swapiService) => {
   }
 }
 
-// Forming lists
 
 const PersonList = compose(
     withSwapiService(mapPersonMethodsToProps),
@@ -51,6 +48,7 @@ const StarshipList = compose(
     withData,
     withChildFunction(renderNameAndModel)
 )(ItemList)
+
 
 export {
   PersonList,
